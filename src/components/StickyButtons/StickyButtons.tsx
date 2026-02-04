@@ -35,33 +35,33 @@ function StickyButtons() {
 
     return (
         <>
-            <div className="stickyButtonsContainer">
-                <a
-                    href={githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="stickyButton stickyButtonGithub"
-                    aria-label="GitHub Profile"
-                >
-                    <SiGithub />
-                </a>
-                <a
-                    href={linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="stickyButton stickyButtonLinkedin"
-                    aria-label="LinkedIn Profile"
-                >
-                    <SiLinkedin />
-                </a>
-                <a
-                    href={resumeUrl}
-                    download="Brandon_Jones_Resume.pdf"
-                    className="stickyButton stickyButtonResume"
-                    aria-label="Download Resume"
-                >
-                    Get Resume
-                </a>
+        <div className="stickyButtonsContainer">
+            <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="stickyButton stickyButtonGithub"
+                aria-label="GitHub Profile"
+            >
+                <SiGithub />
+            </a>
+            <a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="stickyButton stickyButtonLinkedin"
+                aria-label="LinkedIn Profile"
+            >
+                <SiLinkedin />
+            </a>
+            <a
+                href={resumeUrl}
+                download="Brandon_Jones_Resume.pdf"
+                className="stickyButton stickyButtonResume"
+                aria-label="Download Resume"
+            >
+                Get Resume
+            </a>
                 <button
                     onClick={handleOpen}
                     className={`stickyButton stickyButtonContact ${isShaking ? 'shake-animation' : ''}`}
@@ -69,7 +69,7 @@ function StickyButtons() {
                 >
                     Contact Me
                 </button>
-            </div>
+        </div>
             <Backdrop
                 sx={(theme) => ({
                     color: "#fff",

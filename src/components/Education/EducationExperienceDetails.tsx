@@ -14,10 +14,7 @@ interface BackdropProps {
 type CombinedProps = EducationDetailsProps & BackdropProps;
 
 function EducationExperienceDetails({
-    schoolName,
     degreeTitle,
-    degreeImage,
-    honors,
     onBackdropButtonPressed,
 }: CombinedProps) {
     return (

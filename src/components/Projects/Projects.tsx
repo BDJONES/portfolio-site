@@ -56,7 +56,7 @@ export default function ProjectsSection() {
       </motion.h2>
       {/* Project Grid */}
       <div className="projects-grid">
-        {projects.map((project: ProjectProps, index: number) => (
+        {projects.map((project: ProjectProps) => (
           <motion.div
             key={project.id}
             initial={{ opacity: 0, y: 12 }}

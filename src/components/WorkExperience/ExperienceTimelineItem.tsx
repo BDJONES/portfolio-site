@@ -1,5 +1,4 @@
 import type { JobProps } from "./Job";
-import { Job } from "./Job";
 
 interface ExperienceTimelineItemProps {
     companyName: string;
@@ -83,14 +82,18 @@ function ExperienceTimelineItem({
                     {/* Jobs list */}
                     <div className="space-y-4">
                         {sortedJobs.map((job, index) => (
-                            <Job
+                            <div
                                 key={`${job.companyName}-${job.role}-${index}`}
-                                companyName={job.companyName}
-                                role={job.role}
-                                startDate={job.startDate}
-                                endDate={job.endDate}
-                                description={job.description}
-                            />
+                                className="mb-4"
+                            >
+                                <h3 className="text-xl font-semibold text-slate-100 mb-1">
+                                    {job.role}
+                                </h3>
+                                <p className="text-sm text-slate-400 italic mb-2">
+                                    {job.startDate} - {job.endDate}
+                                </p>
+                                <p className="text-slate-300">{job.description}</p>
+                            </div>
                         ))}
                     </div>
                 </div>

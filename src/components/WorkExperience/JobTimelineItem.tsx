@@ -1,19 +1,8 @@
-import { ExperienceCard } from "./ExperienceCard";
-
-interface JobCardProps {
-    companyName: string;
-    role: string;
-    startDate: string;
-    endDate: string;
-    logo?: string;
-}
-
 interface JobTimelineItemProps {
-    jobCard: JobCardProps;
     isLast: boolean;
 }
 
-function JobTimelineItem({ jobCard, isLast }: JobTimelineItemProps) {
+function JobTimelineItem({ isLast }: JobTimelineItemProps) {
     return (
         <div className="flex flex-row relative items-center pb-8">
             {/* Left side - Timeline node and line */}

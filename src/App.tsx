@@ -1,4 +1,3 @@
-import Education from "./components/Education/Education.tsx";
 import Home from "./components/Home/Home.tsx";
 import SideBar from "./components/SideBar/SideBar.tsx";
 import WorkExperience from "./components/WorkExperience/WorkExperience.tsx";
