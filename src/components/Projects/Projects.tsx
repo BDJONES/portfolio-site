@@ -10,31 +10,31 @@ const projects: ProjectProps[] = [
   {
     id: 1,
     name: "Pokemon Battle Evolution",
-    thumbnail: "../../public/images/project_assets/Pokemon_Battle_Evolution/PokemonThumbnail.png",
+    thumbnail: "/images/project_assets/Pokemon_Battle_Evolution/PokemonThumbnail.png",
     description:
       "A Pokemon Battle Evolution battle simulator built with Unity. This game allows you to battle your friends online, competeting in highstakes battles with your favorite Pokemon.",
     story:
       "This project was a passion project that I built in my free time. I wanted to create a game that would be fun to play and would challenge my skills as a developer. I used Unity to build the game and I used the Unity Editor to build the game. I used the Unity Engine to build the game. I used the Unity API to build the game. I used the Unity SDK to build the game. I used the Unity API to build the game. I used the Unity SDK to build the game. I used the Unity API to build the game. I used the Unity SDK to build the game.",
     tech: ["Unity", "C#", "Blender", "GitHub", "Unity Cloud Services"],
     media: [
-      { type: "image", src: "../../public/images/project_assets/Pokemon_Battle_Evolution/PokemonThumbnail.png" },
-      { type: "image", src: "../../public/images/project_assets/Pokemon_Battle_Evolution/Pokemon1.png" },
-      { type: "image", src: "../../public/images/project_assets/Pokemon_Battle_Evolution/Pokemon2.png" },
+      { type: "image", src: "/images/project_assets/Pokemon_Battle_Evolution/PokemonThumbnail.png" },
+      { type: "image", src: "/images/project_assets/Pokemon_Battle_Evolution/Pokemon1.png" },
+      { type: "image", src: "/images/project_assets/Pokemon_Battle_Evolution/Pokemon2.png" },
     ],
     githubLink: "https://github.com/BDJONES/Pokemon-Battle-Evolution"
   },
   {
     id: 2,
     name: "Chess 1999",
-    thumbnail: "../../public/images/project_assets/Chess_Game_1999/ChessThumbnail.png",
+    thumbnail: "/images/project_assets/Chess_Game_1999/ChessThumbnail.png",
     description:
       "A Chess Game built with Unity. This game allows you to play chess with your friends locally.",
     story:
       "This project was a project I built with one of my friends to keep my skills for software deve/game dev up. We used Unity to build this game, but took it upon ourselves to host meeting and truly collaborate with industry tools such as GitHub",
     tech: ["Unity", "C#", "GitHub", "Audacity", "Adobe Illustrator"],
     media: [
-      { type: "image", src: "../../public/images/project_assets/Chess_Game_1999/ChessThumbnail.png" },
-      { type: "image", src: "../../public/images/project_assets/Chess_Game_1999/Chess1.png" },
+      { type: "image", src: "/images/project_assets/Chess_Game_1999/ChessThumbnail.png" },
+      { type: "image", src: "/images/project_assets/Chess_Game_1999/Chess1.png" },
     ],
     githubLink: "https://github.com/WirelessInsect/Chess-Game-2025"
   }
@@ -123,7 +123,7 @@ export default function ProjectsSection() {
                     >
                       <span className="project-github-tooltip">GitHub Repo</span>
                       <img
-                        src="../../public/images/github-logo.svg"
+                        src="/images/github-logo.svg"
                         alt="GitHub"
                         className="project-github-logo"
                       />

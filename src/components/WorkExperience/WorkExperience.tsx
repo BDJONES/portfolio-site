@@ -81,21 +81,21 @@ function WorkExperience() {
     const experiences: ExperienceCardProps[] = [
         {
             companyName: "United Airlines",
-            logo: "../../public/images/united-airlines-logo.png",
+            logo: "/images/united-airlines-logo.png",
             role: "ECDLP Associate",
             startDate: "Aug 2024",
             endDate: "Present",
         },
         {
             companyName: "United Airlines",
-            logo: "../../public/images/united-airlines-logo.png",
+            logo: "/images/united-airlines-logo.png",
             role: "Digital Technology Intern",
             startDate: "May 2023",
             endDate: "Aug 2023",
         },
         {
             companyName: "Center for Advanced Public Safety",
-            logo: "../../public/images/caps-logo.jpeg",
+            logo: "/images/caps-logo.jpeg",
             role: "Student Developer",
             startDate: "May 2022",
             endDate: "May 2023",
@@ -111,7 +111,7 @@ function WorkExperience() {
             endDate: "Present",
             description:
                 "Worked as a Business Analyst on the United Airline Digital Products team. Helped organize development of new features related to customer seating for United Digital Channels.",
-            logo: "../../public/images/united-airlines-logo.png",
+            logo: "/images/united-airlines-logo.png",
             skills: [
                 { name: "Jira", icon: <SiJira />, color: "text-blue-400" },
                 { name: "Azure DevOps", icon: <SiAzuredevops />, color: "text-violet-400" },
@@ -125,7 +125,7 @@ function WorkExperience() {
             endDate: "January 2026",
             description:
                 "Worked as a Generative AI Researcher to research and implement Generative AI solutions for United Airlines including RAG, MCP, and Agentic AI solutions.",
-            logo: "../../public/images/united-airlines-logo.png",
+            logo: "/images/united-airlines-logo.png",
             skills: [
                 { name: "Python", icon: <SiPython />, color: "text-yellow-400" },
                 { name: "FastAPI", icon: <SiFastapi />, color: "text-teal-400" },
@@ -139,7 +139,7 @@ function WorkExperience() {
             endDate: "August 2025",
             description:
                 "Worked as a backend developer on the United Airlines Mobile App team. Used C#/.NET to deliver new features to the app for customers to experience while booking flights.",
-            logo: "../../public/images/united-airlines-logo.png",
+            logo: "/images/united-airlines-logo.png",
             skills: [
                 { name: "C#", icon: <SiCsharp />, color: "text-purple-400" },
                 { name: ".NET", icon: <SiDotnet />, color: "text-blue-500" },
@@ -152,7 +152,7 @@ function WorkExperience() {
             endDate: "January 2025",
             description:
                 "Worked as a data analyst on the United Airlines Air Ops team. Created data driven solutions including dashboards for business partners including crew schedulers.",
-            logo: "../../public/images/united-airlines-logo.png",
+            logo: "/images/united-airlines-logo.png",
             skills: [
                 { name: "Power BI", icon: <SiPowerbi />, color: "text-yellow-500" },
                 { name: "PostgreSQL", icon: <SiPostgresql />, color: "text-blue-400" },
@@ -165,7 +165,7 @@ function WorkExperience() {
             endDate: "August 2023",
             description:
                 "Worked as an iOS developer on the United Airlines Mobile App team to develop new features for cutomers outside of the app, as well as a researcher into AI solutions for baggage tracking.",
-            logo: "../../public/images/united-airlines-logo.png",
+            logo: "/images/united-airlines-logo.png",
             skills: [
                 { name: "SwiftUI", icon: <SiSwift />, color: "text-orange-500" },
             ],

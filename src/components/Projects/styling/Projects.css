@@ -15,7 +15,8 @@
 }
 
 .project-card {
-    @apply cursor-pointer rounded-2xl overflow-hidden border text-slate-100 bg-slate-800 border-slate-700 shadow-lg transition;
+    @apply cursor-pointer rounded-2xl overflow-hidden border text-slate-100 bg-slate-800 border-slate-700 shadow-lg;
+    transition: box-shadow 0.2s ease-out;
 }
 
 .project-card-image {
@@ -111,4 +112,5 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 14px rgba(167, 139, 250, 0.5),
         0 0 28px rgba(167, 139, 250, 0.3);
+    transition: box-shadow 0.15s ease-out;
 }

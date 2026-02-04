@@ -29,18 +29,20 @@ export default function AboutMeSection() {
             {/* Narrative */}
             <div className="md:col-span-2 space-y-4 text-slate-300">
               <p>
-                I'm a software engineer with a background in business analysis and
-                digital product development. I enjoy working at the intersection
-                of user experience, technical systems, and real-world impact.
+                I'm a software engineer currently working at United Airlines where I have
+                had the pleasure of being able to try a variety of different roles through
+                our early career program known as ECDLP (Early Career Digital Leadership Program).
               </p>
               <p>
-                I've worked on customer-facing products in highly regulated,
-                large-scale environments, where collaboration and clear
-                communication are just as important as clean code.
+                I would say I most enjoy working at the intersection of user experience, 
+                technical systems, and real-world impact, and am always looking for new ways to 
+                learn and grow to better the experience for our customers. I think that this
+                love of creating great experiences can also be seen in some of the prjects I work on 
+                in my free time.
               </p>
               <p>
                 On a team, I bring curiosity, structure, and a strong sense of
-                ownership — I like understanding the <em>why</em> behind a
+                ownership. I like understanding the <em>why</em> behind a
                 problem as much as the solution itself.
               </p>
             </div>
@@ -67,7 +69,7 @@ export default function AboutMeSection() {
                 Enjoys
               </h3>
               <div className="flex flex-wrap gap-2">
-                {["Team problem-solving", "Iterative design", "Mentorship", "Learning new systems"].map(
+                {["Team problem-solving", "Iterative design", "Learning new systems", "Innovation-Centered Conversation"].map(
                   item => (
                     <Chip
                       key={item}

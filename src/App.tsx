@@ -12,7 +12,6 @@ function App() {
             <SideBar />
             <Home />
             <AboutMeSection />
-            {/* <Education /> */}
             <WorkExperience />
             <ProjectSection />
         </>
