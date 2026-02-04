@@ -2,9 +2,16 @@ import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 // Load environment variables
 dotenv.config();
+
+// ES module equivalent of __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -22,9 +29,7 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-app.use(express.static(path.join(__dirname, '../dist')));
-
-// Contact form endpoint
+// API routes (must come before static file serving)
 app.post('/api/contact', async (req, res) => {
     const { name, email, phone, message } = req.body;
 
@@ -111,6 +116,10 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
 });
 
+// Serve static files from dist folder (after API routes)
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Catch-all handler: send back React app for client-side routing
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
