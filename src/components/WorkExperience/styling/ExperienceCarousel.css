@@ -1,0 +1,137 @@
+.experienceCarouselContainer {
+    width: 100%;
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+.experienceCarouselWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.experienceCarouselViewport {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    max-width: 1200px;
+}
+
+/* Fog/gradient overlay on left side */
+.experienceCarouselViewport::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    background: linear-gradient(to right, rgb(15, 23, 42) 0%, rgba(15, 23, 42, 0.8) 40%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Fog/gradient overlay on right side */
+.experienceCarouselViewport::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    background: linear-gradient(to left, rgb(15, 23, 42) 0%, rgba(15, 23, 42, 0.8) 40%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.experienceCarouselScroll {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    transition: transform 0.4s ease-out;
+    padding: 1rem 0;
+    /* Start with cards positioned so the first one is centered */
+    /* The transform in JS will handle the rest */
+    padding-left: calc(50% - 210px); /* 210px = half of card width (420px / 2) */
+    padding-right: calc(50% - 210px);
+}
+
+.experienceCarouselItem {
+    flex-shrink: 0;
+    width: 420px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.6;
+}
+
+.experienceCarouselItem:hover {
+    opacity: 0.8;
+}
+
+.experienceCarouselItemActive {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+/* Prevent hover effect on selected card */
+.experienceCarouselItemActive:hover {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+/* Arrow button positioning */
+.experienceCarouselArrowLeft {
+    margin-right: 0.5rem;
+}
+
+.experienceCarouselArrowRight {
+    margin-left: 0.5rem;
+}
+
+/* Small screens (mobile) */
+@media (max-width: 640px) {
+    .experienceCarouselItem {
+        width: 340px;
+    }
+
+    .experienceCarouselScroll {
+        padding-left: calc(50% - 170px); /* 170px = half of card width (340px / 2) */
+        padding-right: calc(50% - 170px);
+    }
+
+    .experienceCarouselViewport {
+        max-width: 100%;
+    }
+
+    .experienceCarouselViewport::before,
+    .experienceCarouselViewport::after {
+        width: 60px;
+    }
+
+    .experienceCarouselWrapper {
+        gap: 0.5rem;
+    }
+}
+
+/* Medium screens (tablet) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .experienceCarouselItem {
+        width: 380px;
+    }
+
+    .experienceCarouselScroll {
+        padding-left: calc(50% - 190px); /* 190px = half of card width (380px / 2) */
+        padding-right: calc(50% - 190px);
+    }
+
+    .experienceCarouselViewport {
+        max-width: 900px;
+    }
+
+    .experienceCarouselViewport::before,
+    .experienceCarouselViewport::after {
+        width: 80px;
+    }
+}

@@ -1,0 +1,147 @@
+.jobTimelineContainer {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: rgb(30, 41, 59) !important; /* slate-800 */
+    color: rgb(241, 245, 249); /* slate-100 */
+    padding: 0.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+}
+
+.jobTimelineList {
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.jobTimelineListItem {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 0.5rem !important;
+}
+
+.jobTimelineListItem:last-child {
+    border-bottom: none;
+}
+
+.jobTimelineIconContainer {
+    min-width: 2.5rem !important;
+    padding-top: 0.25rem;
+}
+
+.jobTimelineIcon {
+    color: rgb(167, 139, 250); /* violet-400 */
+    font-size: 1.5rem !important;
+}
+
+.jobTimelineHeader {
+    margin-bottom: 0.25rem;
+}
+
+.jobTimelineRoleName {
+    color: rgb(241, 245, 249) !important; /* slate-100 */
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 0.125rem;
+}
+
+.jobTimelineDateRange {
+    color: rgba(241, 245, 249, 0.7) !important; /* slate-100 with opacity */
+    font-size: 0.7rem !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+}
+
+.jobTimelineDescription {
+    margin-top: 0.25rem;
+}
+
+.jobTimelineDescriptionList {
+    padding: 0 !important;
+    margin: 0;
+}
+
+.jobTimelineDescriptionItem {
+    padding: 0.125rem 0 !important;
+    margin-bottom: 0.125rem;
+}
+
+.jobTimelineDescriptionItem:last-child {
+    margin-bottom: 0;
+}
+
+.jobTimelineDescriptionText {
+    color: rgba(241, 245, 249, 0.9) !important; /* slate-100 with opacity */
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+}
+
+/* Custom scrollbar styling */
+.jobTimelineContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.jobTimelineContainer::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.jobTimelineContainer::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.jobTimelineContainer::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Small screens (mobile) */
+@media (max-width: 640px) {
+    .jobTimelineContainer {
+        max-height: 60vh;
+        padding: 0.75rem;
+    }
+
+    .jobTimelineList {
+        max-width: 100%;
+    }
+
+    .jobTimelineRoleName {
+        font-size: 0.85rem !important;
+    }
+
+    .jobTimelineDateRange {
+        font-size: 0.65rem !important;
+    }
+
+    .jobTimelineDescriptionText {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Medium screens (tablet) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .jobTimelineContainer {
+        max-height: 65vh;
+        padding: 1rem;
+    }
+
+    .jobTimelineList {
+        max-width: 550px;
+    }
+}
+
+/* Large screens (desktop) */
+@media (min-width: 1025px) {
+    .jobTimelineContainer {
+        max-height: 70vh;
+    }
+
+    .jobTimelineList {
+        max-width: 600px;
+    }
+}

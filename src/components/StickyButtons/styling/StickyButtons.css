@@ -1,0 +1,20 @@
+@reference "tailwindcss";
+
+.stickyButtonsContainer {
+    @apply fixed top-4 right-6 z-50 flex items-center gap-3;
+}
+
+.stickyButton {
+    @apply flex items-center justify-center rounded-lg bg-slate-800 text-violet-400 transition-all duration-200 ease-linear cursor-pointer;
+    @apply hover:bg-violet-400 hover:text-white hover:rounded-sm;
+}
+
+.stickyButtonGithub,
+.stickyButtonLinkedin {
+    @apply p-3 text-2xl;
+}
+
+.stickyButtonResume,
+.stickyButtonContact {
+    @apply px-4 py-3 text-base font-semibold;
+}

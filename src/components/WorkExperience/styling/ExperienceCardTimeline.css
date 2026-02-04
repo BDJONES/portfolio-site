@@ -1,0 +1,115 @@
+.experienceCardTimeline {
+    width: 100%;
+    max-width: 56rem;
+    position: relative;
+    padding: 0 1rem;
+    padding-right: 3rem; /* Extra space on right for glow effect */
+    box-sizing: border-box;
+    overflow-x: visible;
+    overflow-y: visible;
+}
+
+.experienceCardTimelineLine {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 0.125rem;
+    background-color: rgb(148, 163, 184); /* slate-400 */
+    transform: translateX(-50%);
+}
+
+.experienceCardTimelineItems {
+    position: relative;
+    padding-top: 2rem; /* Space for glow effect at the top */
+}
+
+.experienceCardTimelineItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    min-height: 120px;
+}
+
+.experienceCardTimelineItem:last-child {
+    margin-bottom: 0;
+}
+
+.experienceCardTimelineNode {
+    position: absolute;
+    left: 1rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 9999px;
+    background-color: rgb(167, 139, 250); /* violet-400 */
+    border: 2px solid rgb(241, 245, 249); /* slate-100 */
+    z-index: 10;
+    transform: translateX(-50%);
+    top: 50%;
+    margin-top: -0.5rem;
+}
+
+.experienceCardTimelineContent {
+    margin-left: 3rem;
+    flex: 1;
+    min-width: 0;
+    overflow: visible;
+    padding-right: 2rem; /* Space for glow effect */
+}
+
+/* Small screens (mobile) */
+@media (max-width: 640px) {
+    .experienceCardTimeline {
+        padding: 0 0.5rem;
+    }
+
+    .experienceCardTimelineLine {
+        left: 0.5rem;
+    }
+
+    .experienceCardTimelineNode {
+        left: 0.5rem;
+        width: 0.75rem;
+        height: 0.75rem;
+    }
+
+    .experienceCardTimelineContent {
+        margin-left: 1.5rem;
+        padding-right: 1.5rem; /* Space for glow on mobile */
+    }
+
+    .experienceCardTimelineItems {
+        padding-top: 1.5rem; /* Space for glow on mobile */
+    }
+
+    .experienceCardTimelineItem {
+        margin-bottom: 1.5rem;
+        min-height: 100px;
+    }
+}
+
+/* Medium screens (tablet) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .experienceCardTimeline {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .experienceCardTimelineContent {
+        margin-left: 2.5rem;
+        padding-right: 1.75rem; /* Space for glow on tablet */
+    }
+}
+
+/* Large screens (desktop) */
+@media (min-width: 1025px) {
+    .experienceCardTimeline {
+        max-width: 56rem;
+        padding-right: 3rem; /* Extra space for glow on desktop */
+    }
+
+    .experienceCardTimelineContent {
+        padding-right: 2rem; /* Space for glow on desktop */
+    }
+}

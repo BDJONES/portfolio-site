@@ -1,0 +1,63 @@
+@reference "tailwindcss";
+
+.workExperienceScreen {
+    @apply w-full overflow-x-hidden;
+}
+
+.workExperience {
+    @apply flex flex-col justify-center items-center w-full min-h-screen box-border mx-auto;
+    @apply p-2 pt-8 pb-8;
+    @apply sm:p-4 sm:pt-12 sm:pb-8;
+    @apply md:pt-12 md:pb-8;
+    @apply lg:p-8 lg:pt-12 lg:pb-8;
+    padding-left: 1rem;
+}
+
+@media (min-width: 1025px) {
+    .workExperience {
+        padding-left: calc(5rem + 2rem);
+    }
+}
+
+.workExperienceContainer {
+    @apply flex flex-col items-center w-full max-w-[90rem] p-0 box-border;
+}
+
+.workExperienceJobCarouselSection {
+    @apply w-full flex justify-center items-center;
+    animation: slideIn 0.3s ease-out;
+}
+
+.workExperienceCarouselSection {
+    @apply w-full flex justify-center items-center box-border;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.workExperienceInnerContainer {
+    @apply flex flex-col items-center w-full px-4;
+    @apply sm:px-8;
+    @apply md:px-8;
+}
+
+.workExperienceHeading {
+    @apply text-2xl font-bold text-slate-100 mb-4;
+    @apply sm:text-3xl sm:mb-6;
+    @apply md:text-4xl md:mb-8;
+}
+
+/* Extra large screens */
+@media (min-width: 1440px) {
+    .workExperienceContainer {
+        @apply max-w-[120rem];
+    }
+}

@@ -1,0 +1,162 @@
+@reference "tailwindcss";
+
+.experienceCard {
+    @apply bg-slate-800;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease-in-out, width 0.2s ease-in-out;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 420px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+/* Responsive widths for different screen sizes */
+@media (max-width: 640px) {
+    .experienceCard {
+        width: 100%;
+        max-width: 340px;
+        padding: 1rem;
+        min-height: 130px;
+    }
+
+    .experienceCardCompanyName {
+        font-size: 1rem;
+    }
+
+    .experienceCardDateRange {
+        font-size: 0.9rem;
+    }
+
+    .experienceCardRole {
+        font-size: 1.5rem;
+    }
+
+    .experienceCardLogoContainer {
+        width: 3rem;
+        height: 3rem;
+        margin-right: 0.75rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    .experienceCard {
+        width: 100%;
+        max-width: 380px;
+        padding: 1.25rem;
+    }
+
+    .experienceCardCompanyName {
+        font-size: 1.05rem;
+    }
+
+    .experienceCardDateRange {
+        font-size: 1rem;
+    }
+
+    .experienceCardRole {
+        font-size: 1.65rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .experienceCard {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .experienceCard {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+.experienceCard:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 14px rgba(167, 139, 250, 0.5),
+        0 0 28px rgba(167, 139, 250, 0.3);
+}
+
+.experienceCardTopSection {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.experienceCardLogoContainer {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+}
+
+.experienceCardLogo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.experienceCardInfo {
+    flex: 1;
+}
+
+.experienceCardCompanyName {
+    color: rgb(241, 245, 249); /* slate-100 */
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1.5rem;
+    min-height: 1.5rem;
+}
+
+.experienceCardDateRange {
+    color: rgb(241, 245, 249); /* slate-100 */
+    font-size: 1.125rem;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.experienceCardRoleSection {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.experienceCardRole {
+    color: rgb(241, 245, 249); /* slate-100 */
+    font-size: 1.875rem;
+    font-weight: 600;
+}
+
+.experienceCardSelected {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 14px rgba(167, 139, 250, 0.5),
+        0 0 28px rgba(167, 139, 250, 0.3);
+    border: 2px solid rgba(167, 139, 250, 0.6);
+    box-sizing: border-box;
+    min-height: 150px;
+}
+
+/* Prevent hover from darkening selected cards */
+.experienceCardSelected:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 14px rgba(167, 139, 250, 0.5),
+        0 0 28px rgba(167, 139, 250, 0.3);
+}

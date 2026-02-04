@@ -1,0 +1,33 @@
+@reference "tailwindcss";
+
+.media-carousel-container {
+    @apply relative rounded-xl overflow-hidden border border-slate-700 h-80;
+}
+
+.media-carousel-slide {
+    @apply absolute inset-0;
+}
+
+.media-carousel-image {
+    @apply w-full h-80 object-cover;
+}
+
+.media-carousel-video {
+    @apply w-full h-80 object-cover;
+}
+
+.media-carousel-dots {
+    @apply absolute bottom-3 right-3 flex gap-2 z-10;
+}
+
+.media-carousel-dot {
+    @apply min-w-0 w-2.5 h-2.5 p-0 rounded-full transition;
+}
+
+.media-carousel-dot-active {
+    @apply bg-slate-100;
+}
+
+.media-carousel-dot-inactive {
+    @apply bg-slate-100/40 hover:bg-slate-100/60;
+}

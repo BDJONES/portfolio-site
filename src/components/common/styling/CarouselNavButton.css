@@ -1,0 +1,22 @@
+@reference "tailwindcss";
+
+.carouselNavButton {
+    @apply bg-slate-800/70 backdrop-blur-md border border-slate-700 text-slate-300 transition-all duration-200 ease-in-out;
+    flex-shrink: 0;
+}
+
+.carouselNavButton:hover {
+    @apply border-cyan-400 text-cyan-400;
+}
+
+.carouselNavButtonHidden {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+    .carouselNavButton {
+        padding: 0.5rem !important;
+    }
+}

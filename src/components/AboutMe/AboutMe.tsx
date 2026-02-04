@@ -1,0 +1,88 @@
+import { motion } from "framer-motion";
+import { Chip } from "@mui/material";
+
+export default function AboutMeSection() {
+  return (
+    <section id="aboutMe" className="min-h-screen bg-slate-900 flex items-center w-full">
+      <div className="w-full pl-4 lg:pl-24 pr-4 lg:pr-8">
+        <div className="max-w-5xl mx-auto px-6 w-full">
+        {/* Section Header */}
+        <motion.h2
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.4 }}
+          className="text-4xl font-semibold mb-10 text-slate-100 text-center"
+        >
+          About Me
+        </motion.h2>
+
+        {/* Content Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="rounded-2xl border border-slate-700 bg-slate-800 p-8 shadow-lg"
+        >
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Narrative */}
+            <div className="md:col-span-2 space-y-4 text-slate-300">
+              <p>
+                I'm a software engineer with a background in business analysis and
+                digital product development. I enjoy working at the intersection
+                of user experience, technical systems, and real-world impact.
+              </p>
+              <p>
+                I've worked on customer-facing products in highly regulated,
+                large-scale environments, where collaboration and clear
+                communication are just as important as clean code.
+              </p>
+              <p>
+                On a team, I bring curiosity, structure, and a strong sense of
+                ownership — I like understanding the <em>why</em> behind a
+                problem as much as the solution itself.
+              </p>
+            </div>
+
+            {/* Strengths */}
+            <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide">
+                What I bring
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {["Product-minded", "Collaborative", "Adaptable"].map(
+                  trait => (
+                    <Chip
+                      key={trait}
+                      label={trait}
+                      size="small"
+                      className="bg-slate-700 text-slate-100"
+                    />
+                  )
+                )}
+              </div>
+
+              <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide pt-4">
+                Enjoys
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {["Team problem-solving", "Iterative design", "Mentorship", "Learning new systems"].map(
+                  item => (
+                    <Chip
+                      key={item}
+                      label={item}
+                      size="small"
+                      className="bg-slate-700 text-slate-100"
+                    />
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
