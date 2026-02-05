@@ -36,7 +36,7 @@ const projects: ProjectProps[] = [
       { type: "image", src: "/images/project_assets/Chess_Game_1999/ChessThumbnail.png" },
       { type: "image", src: "/images/project_assets/Chess_Game_1999/Chess1.png" },
     ],
-    githubLink: "https://github.com/WirelessInsect/Chess-Game-2025"
+    githubLink: "" //"https://github.com/WirelessInsect/Chess-Game-2025"
   }
 ];
 
@@ -114,6 +114,7 @@ export default function ProjectsSection() {
                     <h3 className="project-details-title">
                       {activeProject.name}
                     </h3>
+                    {activeProject.githubLink.length > 0  &&
                     <a
                       href={activeProject.githubLink}
                       target="_blank"
@@ -128,6 +129,7 @@ export default function ProjectsSection() {
                         className="project-github-logo"
                       />
                     </a>
+}
                   </div>
                   <p className="project-details-description">
                     {activeProject.description}
