@@ -12,6 +12,10 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Get project root - use process.cwd() which is the directory where npm start was run
+const projectRoot = process.cwd();
+const distPath = path.join(projectRoot, 'dist');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -142,16 +146,16 @@ app.get('/api/health', (req, res) => {
 });
 
 // Serve static files from dist folder (after API routes)
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(distPath));
 
 // Explicit root route handler
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+    res.sendFile(path.join(distPath, 'index.html'));
 });
 
 // Catch-all handler: send back React app for client-side routing
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+    res.sendFile(path.join(distPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
