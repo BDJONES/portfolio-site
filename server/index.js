@@ -149,7 +149,7 @@ app.get('/api/health', (req, res) => {
 app.use(express.static(distPath));
 
 // Explicit root route handler
-app.get('/', (req, res) => {
+app.get('../', (req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
 });
 
