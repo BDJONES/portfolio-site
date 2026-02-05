@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
-import { Backdrop } from "@mui/material";
-import ContactForm from "../SideBar/ContactForm";
+// import { Backdrop } from "@mui/material";
+// import ContactForm from "../SideBar/ContactForm";
 import "./styling/StickyButtons.css";
 
 function StickyButtons() {
@@ -9,29 +9,29 @@ function StickyButtons() {
     const linkedinUrl = "https://www.linkedin.com/in/brandon--jones/";
     const resumeUrl = "/Brandon_s_Resume.pdf";
 
-    const [formOpen, setFormOpen] = useState(false);
-    const [formKey, setFormKey] = useState(0);
-    const [isShaking, setIsShaking] = useState(false);
+    // const [formOpen, setFormOpen] = useState(false);
+    // const [formKey, setFormKey] = useState(0);
+    // const [isShaking, setIsShaking] = useState(false);
 
     // Trigger shake animation after 60 seconds on page
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsShaking(true);
-            // Reset after animation duration
-            setTimeout(() => setIsShaking(false), 1500);
-        }, 60000); // 60 seconds
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setIsShaking(true);
+    //         // Reset after animation duration
+    //         setTimeout(() => setIsShaking(false), 1500);
+    //     }, 60000); // 60 seconds
 
-        return () => clearTimeout(timer);
-    }, []);
+    //     return () => clearTimeout(timer);
+    // }, []);
 
-    const handleOpen = () => {
-        setFormKey((prev) => prev + 1); // Force remount with fresh state
-        setFormOpen(true);
-    };
+    // const handleOpen = () => {
+    //     setFormKey((prev) => prev + 1); // Force remount with fresh state
+    //     setFormOpen(true);
+    // };
 
-    const handleClose = () => {
-        setFormOpen(false);
-    };
+    // const handleClose = () => {
+    //     setFormOpen(false);
+    // };
 
     return (
         <>
@@ -62,15 +62,15 @@ function StickyButtons() {
             >
                 Get Resume
             </a>
-                <button
+                {/* <button
                     onClick={handleOpen}
                     className={`stickyButton stickyButtonContact ${isShaking ? 'shake-animation' : ''}`}
                     aria-label="Contact Me"
                 >
                     Contact Me
-                </button>
+                </button> */}
         </div>
-            <Backdrop
+            {/* <Backdrop
                 sx={(theme) => ({
                     color: "#fff",
                     zIndex: theme.zIndex.drawer + 1,
@@ -80,7 +80,7 @@ function StickyButtons() {
                 {formOpen && (
                     <ContactForm backdropClose={handleClose} key={formKey} />
                 )}
-            </Backdrop>
+            </Backdrop> */}
         </>
     );
 }

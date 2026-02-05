@@ -1,0 +1,1 @@
+When you want to bring back the ContactMe Button in the future. Simply just uncomment all lines in the StickyButtons.tsx file. It's that easy.
