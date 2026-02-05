@@ -1,51 +1,16 @@
 import express from 'express';
+import cors from 'cors';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
 // Load environment variables
 dotenv.config();
 
-const distPath = resolve(__dirname, '..', 'dist');
-app.use(express.static(distPath));
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Allowed origin from environment variable or default
-const allowedOrigin = process.env.ALLOWED_ORIGIN || 'https://tan-badger-411555.hostingersite.com';
-
-// Custom CORS configuration with private network support
-app.use((req, res, next) => {
-    const origin = req.headers.origin;
-
-    if (req.path.endsWith('.js')) {
-        res.type('application/javascript');
-    }
-
-    // Handle preflight requests
-    if (req.method === 'OPTIONS') {
-        if (origin === allowedOrigin || !allowedOrigin) {
-            res.header('Access-Control-Allow-Origin', origin || allowedOrigin || '*');
-            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-            res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-            res.header('Access-Control-Allow-Private-Network', 'true');
-            res.header('Access-Control-Max-Age', '86400');
-        }
-        return res.sendStatus(204);
-    }
-
-    // Regular CORS headers for all requests
-    if (origin === allowedOrigin || !allowedOrigin) {
-        res.header('Access-Control-Allow-Origin', origin || allowedOrigin || '*');
-        res.header('Access-Control-Allow-Credentials', 'true');
-    }
-    next();
-});
-
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Create nodemailer transporter
@@ -57,7 +22,9 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// API routes (must come before static file serving)
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Contact form endpoint
 app.post('/api/contact', async (req, res) => {
     const { name, email, phone, message } = req.body;
 
@@ -144,12 +111,8 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(resolve(distPath, 'index.html'));
-});
-
 app.get('*', (req, res) => {
-    res.sendFile(resolve(distPath, 'index.html'));
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.listen(PORT, () => {
