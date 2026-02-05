@@ -14,7 +14,7 @@ const __dirname = dirname(__filename);
 
 // Get project root - use process.cwd() which is the directory where npm start was run
 const projectRoot = process.cwd();
-const distPath = path.join(projectRoot, 'dist');
+const distPath = resolve(__dirname, '..', 'dist');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -148,11 +148,8 @@ app.get('/api/health', (req, res) => {
 // Serve static files from dist folder (after API routes)
 app.use(express.static(distPath));
 
-// Catch-all handler: send back React app for client-side routing
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
-    // console.log(path.join(distPath, 'index.html'));
-    // console.log('Sending index.html');
+    res.sendFile(resolve(distPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
