@@ -8,13 +8,8 @@ import { dirname } from 'path';
 // Load environment variables
 dotenv.config();
 
-// ES module equivalent of __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Get project root - use process.cwd() which is the directory where npm start was run
-const projectRoot = process.cwd();
 const distPath = resolve(__dirname, '..', 'dist');
+app.use(express.static(distPath));
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -25,6 +20,10 @@ const allowedOrigin = process.env.ALLOWED_ORIGIN || 'https://tan-badger-411555.h
 // Custom CORS configuration with private network support
 app.use((req, res, next) => {
     const origin = req.headers.origin;
+
+    if (req.path.endsWith('.js')) {
+        res.type('application/javascript');
+    }
 
     // Handle preflight requests
     if (req.method === 'OPTIONS') {
@@ -145,8 +144,9 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
 });
 
-// Serve static files from dist folder (after API routes)
-app.use(express.static(distPath));
+app.get('/', (req, res) => {
+    res.sendFile(resolve(distPath, 'index.html'));
+});
 
 app.get('*', (req, res) => {
     res.sendFile(resolve(distPath, 'index.html'));
