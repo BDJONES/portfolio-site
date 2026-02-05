@@ -150,9 +150,9 @@ app.use(express.static(distPath));
 
 // Catch-all handler: send back React app for client-side routing
 app.get('*', (req, res) => {
-    res.sendFile(path.join(distPath, 'index.html'));
-    console.log(path.join(distPath, 'index.html'));
-    console.log('Sending index.html');
+    res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
+    // console.log(path.join(distPath, 'index.html'));
+    // console.log('Sending index.html');
 });
 
 app.listen(PORT, () => {
