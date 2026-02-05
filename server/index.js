@@ -15,33 +15,33 @@ app.use(express.json());
 
 // Create nodemailer transporter
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
 });
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
-    const { name, email, phone, message } = req.body;
+  const { name, email, phone, message } = req.body;
 
-    // Validate required fields
-    if (!name || !email || !message) {
-        return res.status(400).json({
-            success: false,
-            error: 'Name, email, and message are required'
-        });
-    }
+  // Validate required fields
+  if (!name || !email || !message) {
+    return res.status(400).json({
+      success: false,
+      error: 'Name, email, and message are required'
+    });
+  }
 
-    // Format the email content
-    const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: 'brandondjonescareer@gmail.com',
-        subject: `Portfolio Contact Form: Message from ${name}`,
-        text: `
+  // Format the email content
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: 'brandondjonescareer@gmail.com',
+    subject: `Portfolio Contact Form: Message from ${name}`,
+    text: `
 Someone Reached Out to You!
 ============================
 
@@ -55,7 +55,7 @@ ${message}
 ============================
 This email was sent from your portfolio contact form.
     `.trim(),
-        html: `
+    html: `
       <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background-color: #0f172a; border-radius: 12px;">
         <h2 style="color: #f1f5f9; border-bottom: 3px solid #a78bfa; padding-bottom: 12px; margin: 0 0 20px 0;">
           Someone Reached Out to You!
@@ -90,31 +90,31 @@ This email was sent from your portfolio contact form.
         </p>
       </div>
     `,
-        replyTo: email, // So you can reply directly to the sender
-    };
+    replyTo: email, // So you can reply directly to the sender
+  };
 
-    try {
-        await transporter.sendMail(mailOptions);
-        console.log(`Email sent successfully from ${name} (${email})`);
-        res.json({ success: true, message: 'Email sent successfully' });
-    } catch (error) {
-        console.error('Error sending email:', error);
-        res.status(500).json({
-            success: false,
-            error: 'Failed to send email. Please try again later.'
-        });
-    }
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Email sent successfully from ${name} (${email})`);
+    res.json({ success: true, message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to send email. Please try again later.'
+    });
+  }
 });
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok' });
+  res.json({ status: 'ok' });
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
