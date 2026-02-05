@@ -148,14 +148,10 @@ app.get('/api/health', (req, res) => {
 // Serve static files from dist folder (after API routes)
 app.use(express.static(distPath));
 
-// Explicit root route handler
-app.get('../', (req, res) => {
-    res.sendFile(path.join(distPath, 'index.html'));
-});
-
 // Catch-all handler: send back React app for client-side routing
 app.get('*', (req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
+    console.log('Sending index.html');
 });
 
 app.listen(PORT, () => {
