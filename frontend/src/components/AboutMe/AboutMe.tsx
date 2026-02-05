@@ -37,7 +37,7 @@ export default function AboutMeSection() {
                 I would say I most enjoy working at the intersection of user experience, 
                 technical systems, and real-world impact, and am always looking for new ways to 
                 learn and grow to better the experience for our customers. I think that this
-                love of creating great experiences can also be seen in some of the prjects I work on 
+                love of creating great experiences can also be seen in some of the projects I work on 
                 in my free time.
               </p>
               <p>

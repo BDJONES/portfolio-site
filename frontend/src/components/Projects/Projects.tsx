@@ -30,7 +30,7 @@ const projects: ProjectProps[] = [
     description:
       "A Chess Game built with Unity. This game allows you to play chess with your friends locally.",
     story:
-      "This project was a project I built with one of my friends to keep my skills for software deve/game dev up. We used Unity to build this game, but took it upon ourselves to host meeting and truly collaborate with industry tools such as GitHub",
+      "This project was a project I built with one of my friends to keep my skills for software deve/game dev up. We used Unity to build this game, but took it upon ourselves to host meeting and truly collaborate with industry tools such as GitHub.",
     tech: ["Unity", "C#", "GitHub", "Audacity", "Adobe Illustrator"],
     media: [
       { type: "image", src: "/images/project_assets/Chess_Game_1999/ChessThumbnail.png" },
