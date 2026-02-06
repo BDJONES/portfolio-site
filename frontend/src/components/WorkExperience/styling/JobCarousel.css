@@ -388,11 +388,14 @@
 
 .jobCard {
     @apply relative w-full max-w-md p-6 rounded-2xl border border-slate-700 bg-slate-800/80 backdrop-blur-md shadow-xl;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .jobCardAccent {
-    @apply absolute top-0 left-0 h-1 w-full bg-linear-to-r from-violet-400 to-cyan-400;
+    @apply absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-violet-400 to-cyan-400 rounded-t-2xl;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .jobCardHeader {
