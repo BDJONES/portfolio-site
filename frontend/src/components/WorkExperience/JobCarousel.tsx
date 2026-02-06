@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { JobProps, SkillItem } from "./Job";
 import "./styling/JobCarousel.css";
 import { motion } from "framer-motion";
 import { CarouselNavButton } from "../common/CarouselNavButton";
+
+/** Minimum horizontal movement (px) before we treat the gesture as horizontal (avoids stealing vertical scroll). */
+const SWIPE_LOCK_THRESHOLD = 12;
+/** Minimum swipe distance (px) to change slide on release. */
+const SWIPE_CHANGE_THRESHOLD = 40;
 
 // Only show tooltip when device supports hover (not on touch/mobile)
 const supportsHover = () =>
@@ -79,6 +84,12 @@ function JobCarousel({ jobs }: JobCarouselProps) {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [slideDirection, setSlideDirection] = useState<"left" | "right">("right");
+    const [dragOffset, setDragOffset] = useState(0);
+    const swipeRef = useRef<HTMLDivElement>(null);
+    const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+    const gestureLockRef = useRef<"h" | "v" | null>(null);
+    const lastDeltaXRef = useRef(0);
+    const justSwipedRef = useRef(false);
 
     // Clamp currentIndex to valid range - handles case when jobs array shrinks
     const safeCurrentIndex =
@@ -92,6 +103,82 @@ function JobCarousel({ jobs }: JobCarouselProps) {
             setCurrentIndex(safeCurrentIndex);
         }
     }, [currentIndex, safeCurrentIndex]);
+
+    // Touch swipe: same behavior as Experience carousel (lock to horizontal after threshold, 40px to change slide)
+    useEffect(() => {
+        const el = swipeRef.current;
+        if (!el) return;
+
+        const handleTouchStart = (e: TouchEvent) => {
+            if (e.touches.length !== 1) return;
+            touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            gestureLockRef.current = null;
+            lastDeltaXRef.current = 0;
+        };
+
+        const handleTouchMove = (e: TouchEvent) => {
+            if (e.touches.length !== 1 || !touchStartRef.current) return;
+            const deltaX = e.touches[0].clientX - touchStartRef.current.x;
+            const deltaY = e.touches[0].clientY - touchStartRef.current.y;
+
+            if (gestureLockRef.current === null) {
+                if (Math.abs(deltaX) > SWIPE_LOCK_THRESHOLD || Math.abs(deltaY) > SWIPE_LOCK_THRESHOLD) {
+                    gestureLockRef.current = Math.abs(deltaX) > Math.abs(deltaY) ? "h" : "v";
+                }
+            }
+
+            if (gestureLockRef.current === "h") {
+                e.preventDefault();
+                lastDeltaXRef.current = deltaX;
+                setDragOffset(deltaX);
+            }
+        };
+
+        const handleTouchEnd = () => {
+            if (gestureLockRef.current === "h") {
+                const dx = lastDeltaXRef.current;
+                if (dx < -SWIPE_CHANGE_THRESHOLD) {
+                    setSlideDirection("right");
+                    setCurrentIndex((i) => Math.min(i + 1, sortedJobs.length - 1));
+                    justSwipedRef.current = true;
+                    setTimeout(() => {
+                        justSwipedRef.current = false;
+                    }, 300);
+                } else if (dx > SWIPE_CHANGE_THRESHOLD) {
+                    setSlideDirection("left");
+                    setCurrentIndex((i) => Math.max(0, i - 1));
+                    justSwipedRef.current = true;
+                    setTimeout(() => {
+                        justSwipedRef.current = false;
+                    }, 300);
+                }
+            }
+            setDragOffset(0);
+            touchStartRef.current = null;
+            gestureLockRef.current = null;
+        };
+
+        const handleClickCapture = (e: MouseEvent) => {
+            if (justSwipedRef.current) {
+                e.preventDefault();
+                e.stopPropagation();
+                justSwipedRef.current = false;
+            }
+        };
+
+        el.addEventListener("touchstart", handleTouchStart, { passive: true });
+        el.addEventListener("touchmove", handleTouchMove, { passive: false });
+        el.addEventListener("touchend", handleTouchEnd, { passive: true });
+        el.addEventListener("touchcancel", handleTouchEnd, { passive: true });
+        el.addEventListener("click", handleClickCapture, true);
+        return () => {
+            el.removeEventListener("touchstart", handleTouchStart);
+            el.removeEventListener("touchmove", handleTouchMove);
+            el.removeEventListener("touchend", handleTouchEnd);
+            el.removeEventListener("touchcancel", handleTouchEnd);
+            el.removeEventListener("click", handleClickCapture, true);
+        };
+    }, [sortedJobs.length]);
 
     const handlePrevious = () => {
         setSlideDirection("left");
@@ -124,6 +211,7 @@ function JobCarousel({ jobs }: JobCarouselProps) {
 
     const hasPrevious = safeCurrentIndex > 0;
     const hasNext = safeCurrentIndex < sortedJobs.length - 1;
+    const isDragging = dragOffset !== 0;
 
     return (
         <motion.div 
@@ -145,13 +233,18 @@ function JobCarousel({ jobs }: JobCarouselProps) {
 
                 {/* Job Card */}
                 <div className="jobCarouselCardContainer">
-                    <motion.div
-                        key={`${currentJob.companyName}-${currentJob.role}-${currentIndex}`}
-                        initial={{ opacity: 0, x: slideDirection === "right" ? 50 : -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="jobCard"
+                    <div
+                        ref={swipeRef}
+                        className={`jobCarouselCardDragWrapper${isDragging ? " jobCarouselCardDragWrapperDragging" : ""}`}
+                        style={{ transform: `translateX(${dragOffset}px)` }}
                     >
+                        <motion.div
+                            key={`${currentJob.companyName}-${currentJob.role}-${currentIndex}`}
+                            initial={{ opacity: 0, x: slideDirection === "right" ? 50 : -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="jobCard"
+                        >
                         {/* Accent line */}
                         <div className="jobCardAccent" />
 
@@ -192,7 +285,8 @@ function JobCarousel({ jobs }: JobCarouselProps) {
                                 </div>
                             </footer>
                         )}
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
 
                 <div className="jobCarouselArrowSpacer jobCarouselArrowSpacerRight">

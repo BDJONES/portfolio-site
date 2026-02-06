@@ -22,6 +22,24 @@
     max-width: 425px;
 }
 
+.jobCarouselCardDragWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: grab;
+    touch-action: pan-y;
+    transition: transform 0.25s ease-out;
+}
+
+.jobCarouselCardDragWrapper:active {
+    cursor: grabbing;
+}
+
+/* No transition while touch-dragging so card follows finger (same as experience carousel) */
+.jobCarouselCardDragWrapperDragging {
+    transition: none;
+}
+
 .jobCarouselItem {
     background-color: rgb(30, 41, 59) !important; /* slate-800 */
     color: rgb(241, 245, 249); /* slate-100 */
@@ -221,6 +239,13 @@
     width: 3rem;
     min-height: 3rem;
     position: relative;
+}
+
+/* Mobile: hide nav buttons and use drag/swipe only */
+@media (max-width: 768px) {
+    .jobCarouselArrowSpacer {
+        display: none;
+    }
 }
 
 /* Small screens (≤iPhone 14): position arrow buttons in spacers; ensure visible and tappable */

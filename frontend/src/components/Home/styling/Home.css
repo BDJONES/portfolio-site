@@ -40,7 +40,8 @@
     }
 }
 
-@media (min-width: 431px) and (max-width: 640px) {
+/* Same avatar size from 431px through 767px (so 640 and 767 match) */
+@media (min-width: 431px) and (max-width: 767px) {
     .AvatarContainer {
         @apply max-w-[220px];
     }
