@@ -27,27 +27,28 @@ function parseDate(dateString: string): Date {
         return new Date(); // Present is always the most recent
     }
 
-    // Parse format "MMM YYYY" (e.g., "Feb 2025", "Jan 2025")
-    const monthAbbreviations = [
-        "jan",
-        "feb",
-        "mar",
-        "apr",
-        "may",
-        "jun",
-        "jul",
-        "aug",
-        "sep",
-        "oct",
-        "nov",
-        "dec",
-    ];
+    // Parse format "MMM YYYY" (e.g., "Feb 2025", "Jan 2025") or full month names
+    const monthMap: { [key: string]: number } = {
+        "jan": 0, "january": 0,
+        "feb": 1, "february": 1,
+        "mar": 2, "march": 2,
+        "apr": 3, "april": 3,
+        "may": 4,
+        "jun": 5, "june": 5,
+        "jul": 6, "july": 6,
+        "aug": 7, "august": 7,
+        "sep": 8, "september": 8,
+        "oct": 9, "october": 9,
+        "nov": 10, "november": 10,
+        "dec": 11, "december": 11,
+    };
 
     const parts = dateString.trim().toLowerCase().split(" ");
     if (parts.length >= 2) {
-        const month = monthAbbreviations.indexOf(parts[0]);
+        const monthStr = parts[0];
         const year = parseInt(parts[1]);
-        if (month !== -1 && !isNaN(year)) {
+        const month = monthMap[monthStr];
+        if (month !== undefined && !isNaN(year)) {
             return new Date(year, month, 1);
         }
     }
@@ -186,6 +187,7 @@ function WorkExperience() {
     ];
 
     // Filter jobs by selected experience (company name AND date range overlap)
+    // Experience cards represent a time period at a company, job cards show all roles during that period
     const filteredJobs = selectedExperience
         ? jobs.filter(
               (job) =>
@@ -230,7 +232,10 @@ function WorkExperience() {
                     <div className="workExperienceContainer">
                         {selectedExperience && filteredJobs.length > 0 && (
                             <div className="workExperienceJobCarouselSection">
-                                <JobCarousel jobs={filteredJobs} />
+                                <JobCarousel 
+                                    key={`${selectedExperience.companyName}-${selectedExperience.role}-${selectedExperience.startDate}`}
+                                    jobs={filteredJobs} 
+                                />
                             </div>
                         )}
                         <div className="workExperienceCarouselSection">

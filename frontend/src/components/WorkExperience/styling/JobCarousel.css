@@ -26,13 +26,19 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    cursor: grab;
-    touch-action: pan-y;
+    touch-action: none; /* Allow pointer events to handle all gestures */
     transition: transform 0.25s ease-out;
 }
 
-.jobCarouselCardDragWrapper:active {
-    cursor: grabbing;
+/* Only show grab cursor on mobile where dragging is enabled */
+@media (max-width: 768px) {
+    .jobCarouselCardDragWrapper {
+        cursor: grab;
+    }
+
+    .jobCarouselCardDragWrapper:active {
+        cursor: grabbing;
+    }
 }
 
 /* No transition while touch-dragging so card follows finger (same as experience carousel) */
@@ -422,6 +428,7 @@
 .jobCard {
     @apply relative w-full max-w-md p-6 rounded-2xl border border-slate-700 bg-slate-800/80 backdrop-blur-md shadow-xl;
     overflow: hidden;
+    touch-action: none; /* Allow pointer events to handle all gestures */
 }
 
 .jobCardAccent {
@@ -451,6 +458,16 @@
     @apply mb-6;
     min-height: 0;
     overflow: visible;
+    touch-action: pan-y; /* Allow vertical scrolling in description */
+}
+
+/* MacBook Pro 14-inch (3024x1964 native, ~1512px effective width): fixed description height */
+@media (min-width: 1400px) and (max-width: 1800px) {
+    .jobCardDescriptionSection {
+        height: 91px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 }
 
 .jobCardDescription {
@@ -500,6 +517,14 @@
 
     .jobCardTechIcon {
         @apply w-5 h-5;
+    }
+}
+
+/* iPhone 14 (390px): fixed description height */
+@media (min-width: 376px) and (max-width: 390px) {
+    .jobCardDescriptionSection {
+        height: 76px;
+        overflow-y: auto;
     }
 }
 
