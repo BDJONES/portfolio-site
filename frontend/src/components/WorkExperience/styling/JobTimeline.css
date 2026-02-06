@@ -1,6 +1,4 @@
 .jobTimelineContainer {
-    max-height: 70vh;
-    overflow-y: auto;
     overflow-x: hidden;
     background-color: rgb(30, 41, 59) !important; /* slate-800 */
     color: rgb(241, 245, 249); /* slate-100 */
@@ -80,29 +78,9 @@
     line-height: 1.4 !important;
 }
 
-/* Custom scrollbar styling */
-.jobTimelineContainer::-webkit-scrollbar {
-    width: 8px;
-}
-
-.jobTimelineContainer::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-}
-
-.jobTimelineContainer::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-}
-
-.jobTimelineContainer::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
-
 /* Small screens (mobile) */
 @media (max-width: 640px) {
     .jobTimelineContainer {
-        max-height: 60vh;
         padding: 0.75rem;
     }
 
@@ -126,7 +104,6 @@
 /* Medium screens (tablet) */
 @media (min-width: 641px) and (max-width: 1024px) {
     .jobTimelineContainer {
-        max-height: 65vh;
         padding: 1rem;
     }
 
@@ -137,10 +114,6 @@
 
 /* Large screens (desktop) */
 @media (min-width: 1025px) {
-    .jobTimelineContainer {
-        max-height: 70vh;
-    }
-
     .jobTimelineList {
         max-width: 600px;
     }

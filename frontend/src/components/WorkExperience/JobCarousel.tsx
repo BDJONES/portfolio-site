@@ -4,6 +4,10 @@ import "./styling/JobCarousel.css";
 import { motion } from "framer-motion";
 import { CarouselNavButton } from "../common/CarouselNavButton";
 
+// Only show tooltip when device supports hover (not on touch/mobile)
+const supportsHover = () =>
+    typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
+
 // Skill icon component with custom tooltip
 function SkillIcon({ skill }: { skill: SkillItem }) {
     const [showTooltip, setShowTooltip] = useState(false);
@@ -11,7 +15,7 @@ function SkillIcon({ skill }: { skill: SkillItem }) {
     return (
         <div
             className="jobCardTechItem"
-            onMouseEnter={() => setShowTooltip(true)}
+            onMouseEnter={() => supportsHover() && setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
         >
             <span className={`jobCardTechIcon ${skill.color}`}>
@@ -130,12 +134,14 @@ function JobCarousel({ jobs }: JobCarouselProps) {
             transition={{ duration: 0.4, delay: 0.1 }}
         >
             <div className="jobCarouselWrapper">
-                <CarouselNavButton
-                    direction="left"
-                    onClick={handlePrevious}
-                    hidden={!hasPrevious}
-                    className="jobCarouselArrowLeft"
-                />
+                <div className="jobCarouselArrowSpacer jobCarouselArrowSpacerLeft">
+                    <CarouselNavButton
+                        direction="left"
+                        onClick={handlePrevious}
+                        hidden={!hasPrevious}
+                        className="jobCarouselArrowLeft"
+                    />
+                </div>
 
                 {/* Job Card */}
                 <div className="jobCarouselCardContainer">
@@ -189,12 +195,14 @@ function JobCarousel({ jobs }: JobCarouselProps) {
                     </motion.div>
                 </div>
 
-                <CarouselNavButton
-                    direction="right"
-                    onClick={handleNext}
-                    hidden={!hasNext}
-                    className="jobCarouselArrowRight"
-                />
+                <div className="jobCarouselArrowSpacer jobCarouselArrowSpacerRight">
+                    <CarouselNavButton
+                        direction="right"
+                        onClick={handleNext}
+                        hidden={!hasNext}
+                        className="jobCarouselArrowRight"
+                    />
+                </div>
             </div>
         </motion.div>
     );

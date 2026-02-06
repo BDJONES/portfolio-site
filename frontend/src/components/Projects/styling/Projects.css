@@ -31,6 +31,19 @@
     @apply text-lg font-medium text-slate-100;
 }
 
+/* Prevent 0-height full-width line flash when closing (log evidence: two DIVs w=1512 h=0) */
+.project-dialog-root .MuiDialog-container,
+.project-dialog-root .MuiDialog-container *,
+.project-dialog-root .MuiBackdrop-root {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.project-dialog-root .MuiDialog-container {
+    overflow: hidden !important;
+}
+
 .project-dialog-paper {
     @apply bg-slate-900 rounded-2xl border border-slate-700 shadow-2xl;
 }
@@ -41,6 +54,12 @@
 
 .project-dialog-close-btn {
     @apply absolute right-4 top-4 text-slate-400;
+}
+
+@media (max-width: 1024px) {
+    .project-dialog-close-btn {
+        display: none;
+    }
 }
 
 .project-dialog-grid {
@@ -81,7 +100,8 @@
 }
 
 .project-github-logo:hover {
-    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgb(167, 139, 250)) drop-shadow(0 0 12px rgb(196, 181, 253));
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgb(167, 139, 250))
+        drop-shadow(0 0 12px rgb(196, 181, 253));
 }
 
 .project-details-description {
@@ -109,8 +129,10 @@
 }
 
 .project-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 14px rgba(167, 139, 250, 0.5),
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05),
+        0 0 14px rgba(167, 139, 250, 0.5),
         0 0 28px rgba(167, 139, 250, 0.3);
     transition: box-shadow 0.15s ease-out;
 }

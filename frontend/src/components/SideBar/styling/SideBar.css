@@ -1,0 +1,36 @@
+/* Bottom bar (mobile/tablet): full width edge-to-edge and respect safe areas */
+@media (max-width: 1023px) {
+    .sidebarRoot {
+        left: 0;
+        right: 0;
+        width: 100%;
+        min-width: 100%;
+        margin: 0;
+        padding-left: max(0.5rem, env(safe-area-inset-left, 0));
+        padding-right: max(0.5rem, env(safe-area-inset-right, 0));
+        box-sizing: border-box;
+    }
+
+    /* Taller bar on tablets / foldables (e.g. iPad mini, Zenbook Fold) */
+    .sidebarRoot {
+        min-height: 3.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    @media (min-width: 640px) {
+        .sidebarRoot {
+            min-height: 4rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .sidebarRoot {
+            min-height: 4.5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+}

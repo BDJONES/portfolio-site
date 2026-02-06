@@ -5,16 +5,41 @@
 }
 
 .stickyButton {
-    @apply flex items-center justify-center rounded-lg bg-slate-800 text-violet-400 transition-all duration-200 ease-linear cursor-pointer;
+    @apply flex items-center justify-center rounded-lg border border-slate-700 text-violet-400 transition-all duration-200 ease-linear cursor-pointer;
     @apply hover:bg-violet-400 hover:text-white hover:rounded-sm;
+    background-color: rgba(30, 41, 59, 0.85);
 }
 
 .stickyButtonGithub,
-.stickyButtonLinkedin {
+.stickyButtonLinkedin,
+.stickyButtonEmail {
     @apply p-3 text-2xl;
 }
 
 .stickyButtonResume,
 .stickyButtonContact {
     @apply px-4 py-3 text-base font-semibold;
+}
+
+/* Smaller sticky buttons on narrow screens (e.g. iPhone SE 375px) */
+@media (max-width: 430px) {
+    .stickyButtonsContainer {
+        @apply top-2 right-3 gap-2;
+    }
+
+    .stickyButtonGithub,
+    .stickyButtonLinkedin,
+    .stickyButtonEmail {
+        @apply p-2 text-lg;
+    }
+
+    .stickyButtonResume,
+    .stickyButtonContact {
+        @apply px-3 py-2 text-sm font-semibold;
+    }
+}
+
+.emailPopupButton {
+    @apply rounded-lg bg-slate-700 text-slate-100 px-4 py-2 text-sm font-medium transition-all duration-200;
+    @apply hover:bg-violet-400 hover:cursor-pointer;
 }

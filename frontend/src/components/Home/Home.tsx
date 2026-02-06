@@ -6,12 +6,12 @@ function Home() {
     return (
         <div className="Screen">
             {/* <VerticalLinearStepper /> */}
-            <div className="Home min-h-screen pl-16 md:pl-20" id="home">
+            <div className="Home min-h-screen pl-0 lg:pl-20" id="home">
                 <div className="w-full md:w-[32%] flex justify-center">
-                <Avatar />
+                    <Avatar />
                 </div>
                 <div className="w-full md:w-[50%] flex justify-center">
-                <HomeText />
+                    <HomeText />
                 </div>
             </div>
         </div>

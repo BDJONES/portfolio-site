@@ -7,9 +7,12 @@
     margin-bottom: 1rem;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.2s ease-in-out, width 0.2s ease-in-out;
+    transition:
+        box-shadow 0.2s ease-in-out,
+        width 0.2s ease-in-out;
     cursor: pointer;
     border: 2px solid transparent;
     box-sizing: border-box;
@@ -21,71 +24,11 @@
     flex-shrink: 0;
 }
 
-/* Responsive widths for different screen sizes */
-@media (max-width: 640px) {
-    .experienceCard {
-        width: 100%;
-        max-width: 340px;
-        padding: 1rem;
-        min-height: 130px;
-    }
-
-    .experienceCardCompanyName {
-        font-size: 1rem;
-    }
-
-    .experienceCardDateRange {
-        font-size: 0.9rem;
-    }
-
-    .experienceCardRole {
-        font-size: 1.5rem;
-    }
-
-    .experienceCardLogoContainer {
-        width: 3rem;
-        height: 3rem;
-        margin-right: 0.75rem;
-    }
-}
-
-@media (min-width: 641px) and (max-width: 768px) {
-    .experienceCard {
-        width: 100%;
-        max-width: 380px;
-        padding: 1.25rem;
-    }
-
-    .experienceCardCompanyName {
-        font-size: 1.05rem;
-    }
-
-    .experienceCardDateRange {
-        font-size: 1rem;
-    }
-
-    .experienceCardRole {
-        font-size: 1.65rem;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .experienceCard {
-        width: 100%;
-        max-width: 400px;
-    }
-}
-
-@media (min-width: 1025px) {
-    .experienceCard {
-        width: 100%;
-        max-width: 420px;
-    }
-}
-
 .experienceCard:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 14px rgba(167, 139, 250, 0.5),
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05),
+        0 0 14px rgba(167, 139, 250, 0.5),
         0 0 28px rgba(167, 139, 250, 0.3);
 }
 
@@ -146,8 +89,10 @@
 }
 
 .experienceCardSelected {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 14px rgba(167, 139, 250, 0.5),
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05),
+        0 0 14px rgba(167, 139, 250, 0.5),
         0 0 28px rgba(167, 139, 250, 0.3);
     border: 2px solid rgba(167, 139, 250, 0.6);
     box-sizing: border-box;
@@ -156,7 +101,128 @@
 
 /* Prevent hover from darkening selected cards */
 .experienceCardSelected:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 14px rgba(167, 139, 250, 0.5),
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05),
+        0 0 14px rgba(167, 139, 250, 0.5),
         0 0 28px rgba(167, 139, 250, 0.3);
+}
+
+/* Mobile: no hover or selected styling on experience cards */
+@media (max-width: 1024px) {
+    .experienceCard:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .experienceCardSelected,
+    .experienceCardSelected:hover {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        border: 2px solid transparent;
+    }
+}
+
+/* Responsive: must come after base rules so they override. */
+@media (max-width: 430px) {
+    .experienceCard {
+        width: 100%;
+        max-width: min(calc(100vw - 2rem), 380px);
+        padding: 1rem;
+        min-height: 130px;
+    }
+
+    .experienceCardCompanyName {
+        font-size: 1rem;
+    }
+
+    .experienceCardDateRange {
+        font-size: 0.9rem;
+    }
+
+    .experienceCardRole {
+        font-size: 1.5rem;
+    }
+
+    .experienceCardLogoContainer {
+        width: 3rem;
+        height: 3rem;
+        margin-right: 0.75rem;
+    }
+}
+
+/* Very small screens (≤344px, smaller than iPhone SE): slightly smaller text */
+@media (max-width: 344px) {
+    .experienceCardCompanyName {
+        font-size: 0.875rem;
+    }
+
+    .experienceCardDateRange {
+        font-size: 0.8rem;
+    }
+
+    .experienceCardRole {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 431px) and (max-width: 640px) {
+    .experienceCard {
+        width: 100%;
+        max-width: 400px;
+        padding: 1rem;
+        min-height: 130px;
+    }
+
+    .experienceCardCompanyName {
+        font-size: 1rem;
+    }
+
+    .experienceCardDateRange {
+        font-size: 0.9rem;
+    }
+
+    .experienceCardRole {
+        font-size: 1.5rem;
+    }
+
+    .experienceCardLogoContainer {
+        width: 3rem;
+        height: 3rem;
+        margin-right: 0.75rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    .experienceCard {
+        width: 100%;
+        max-width: 420px;
+        padding: 1.25rem;
+    }
+
+    .experienceCardCompanyName {
+        font-size: 1.05rem;
+    }
+
+    .experienceCardDateRange {
+        font-size: 1rem;
+    }
+
+    .experienceCardRole {
+        font-size: 1.65rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .experienceCard {
+        width: 100%;
+        max-width: 440px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .experienceCard {
+        width: 100%;
+        max-width: 420px;
+    }
 }

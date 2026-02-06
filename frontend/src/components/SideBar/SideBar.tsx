@@ -3,13 +3,17 @@ import DeskIcon from "@mui/icons-material/Desk";
 import CodeIcon from "@mui/icons-material/Code";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "../../index.css";
+import "./styling/SideBar.css";
 import SideBarButton from "./SideBarButton";
 
 function SideBar() {
     // const homeButton = <HomeIcon fontSize="large" />;
     return (
-        <div className="fixed h-screen w-16 md:w-20 left-0 top-0 bg-slate-700 flex flex-col p-2 md:p-4 items-center z-50">
-            <div className="flex flex-col items-center justify-center flex-1">
+        <div
+            className="sidebarRoot fixed bottom-0 left-0 right-0 w-full flex flex-row justify-center items-center p-2 bg-slate-700 z-40
+            lg:bottom-auto lg:right-auto lg:top-0 lg:left-0 lg:h-screen lg:w-20 lg:flex-col lg:p-4 lg:items-center lg:min-h-0"
+        >
+            <div className="flex flex-row justify-evenly items-center w-full lg:flex-col lg:flex-1 lg:justify-center lg:items-center lg:w-auto lg:gap-2">
                 {/* <SideBarButton
                     icon={<HomeIcon fontSize="large" />}
                     description="Home"

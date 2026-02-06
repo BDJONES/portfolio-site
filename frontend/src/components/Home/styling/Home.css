@@ -21,6 +21,31 @@
     @apply max-w-full h-auto rounded-lg;
 }
 
+/* Smaller Avatar and extra vertical spacing on small screens to avoid overlap */
+@media (max-width: 430px) {
+    .Home {
+        @apply gap-8;
+    }
+
+    .AvatarContainer {
+        @apply max-w-[180px];
+    }
+
+    .AvatarPhoto {
+        @apply max-w-full;
+    }
+
+    .TextContainer {
+        @apply max-w-full px-1 mt-4;
+    }
+}
+
+@media (min-width: 431px) and (max-width: 640px) {
+    .AvatarContainer {
+        @apply max-w-[220px];
+    }
+}
+
 .TextContainer {
     @apply flex flex-col items-center max-w-full w-full;
 }
