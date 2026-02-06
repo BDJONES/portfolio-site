@@ -223,8 +223,13 @@
     position: relative;
 }
 
-/* Small screens (≤iPhone 14): position only the arrow buttons halfway between screen edge and job card; spacers keep card size */
+/* Small screens (≤iPhone 14): position arrow buttons in spacers; ensure visible and tappable */
 @media (max-width: 430px) {
+    .jobCarouselArrowSpacer {
+        width: 3.5rem;
+        min-height: 3.5rem;
+    }
+
     .jobCarouselArrowSpacerLeft .jobCarouselArrowLeft {
         position: absolute;
         right: 0;
@@ -232,16 +237,19 @@
         transform: translateY(-50%);
         margin-right: 0;
         z-index: 5;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
     }
 
     .jobCarouselArrowSpacerRight .jobCarouselArrowRight {
         position: absolute;
-        /* right: calc((100vw - min(calc(100vw - 2rem), 410px)) / 4 - 1.25rem); */
+        left: 0;
         top: 50%;
         transform: translateY(-50%);
-        /* transform: translateX(-50%); */
         margin-left: 0;
         z-index: 5;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
     }
 }
 
@@ -467,6 +475,18 @@
 
     .jobCardTechIcon {
         @apply w-5 h-5;
+    }
+}
+
+/* Small phones (e.g. iPhone SE 375px): smaller job card title, fixed description height */
+@media (max-width: 375px) {
+    .jobCardTitle {
+        font-size: 1.125rem;
+    }
+
+    .jobCardDescriptionSection {
+        height: 98px;
+        overflow-y: auto;
     }
 }
 
