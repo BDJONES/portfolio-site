@@ -461,8 +461,8 @@
     touch-action: pan-y; /* Allow vertical scrolling in description */
 }
 
-/* MacBook Pro 14-inch (3024x1964 native, ~1512px effective width): fixed description height */
-@media (min-width: 1400px) and (max-width: 1800px) {
+/* Desktop (MacBook Pro 14-inch, 1920x1080, etc.): fixed description height */
+@media (min-width: 1400px) and (max-width: 2000px) {
     .jobCardDescriptionSection {
         height: 91px;
         overflow-y: auto;
@@ -490,10 +490,26 @@
     @apply cursor-default rounded-lg bg-slate-700/50 p-2 ring-1 ring-white/10 transition-colors hover:bg-slate-700 relative;
 }
 
-/* Mobile: no hover effect on Technology Used items */
+/* Mobile: dark overlay on tech logo when tapped to show technology name */
+.jobCardTechOverlay {
+    @apply absolute inset-0 flex items-center justify-center rounded-lg bg-slate-900/90 text-slate-100;
+    z-index: 10;
+}
+
+.jobCardTechOverlayText {
+    @apply text-xs font-medium text-slate-100 text-center px-1;
+}
+
+/* Mobile: no hover effect on Technology Used items; show pointer for tappable tech logos */
 @media (max-width: 1024px) {
     .jobCardTechItem:hover {
         background-color: rgb(51 65 85 / 0.5); /* same as bg-slate-700/50 */
+    }
+}
+
+@media (max-width: 768px) {
+    .jobCardTechItem {
+        cursor: pointer;
     }
 }
 

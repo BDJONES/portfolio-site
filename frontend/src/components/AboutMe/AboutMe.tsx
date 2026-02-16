@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Chip } from "@mui/material";
 
 export default function AboutMeSection() {
     return (
@@ -32,23 +31,25 @@ export default function AboutMeSection() {
                             {/* Narrative */}
                             <div className="md:col-span-2 space-y-4 text-slate-300">
                                 <p>
-                                    I'm a software engineer currently working at
-                                    United Airlines where I have had the
-                                    pleasure of being able to try a variety of
-                                    different roles through our early career
-                                    program known as ECDLP (Early Career Digital
-                                    Leadership Program).
+                                    I'm am currently working at United Airlines
+                                    where I have had the pleasure of being able
+                                    to try a variety of different roles through
+                                    our early career program known as ECDLP
+                                    (Early Career Digital Leadership Program)
+                                    ranging from Data Analytics, to Software
+                                    Development, and even Business Analytics.
                                 </p>
                                 <p>
-                                    I would say I most enjoy working at the
-                                    intersection of user experience, technical
-                                    systems, and real-world impact, and am
-                                    always looking for new ways to learn and
-                                    grow to better the experience for our
-                                    customers. I think that this love of
-                                    creating great experiences can also be seen
-                                    in some of the projects I work on in my free
-                                    time.
+                                    Through my many professional experiences, I
+                                    would say I most enjoy working at the
+                                    intersection of user experience and
+                                    technical systems, to create real-world
+                                    impact. I think that this love of creating
+                                    great experiences can also be seen in some
+                                    of the projects I work on in my free time. I
+                                    amalways looking for new ways to learn and
+                                    grow, in order to better the experience for
+                                    our customers.
                                 </p>
                                 <p>
                                     On a team, I bring curiosity, structure, and
@@ -58,44 +59,20 @@ export default function AboutMeSection() {
                                 </p>
                             </div>
 
-                            {/* Strengths */}
-                            <div className="space-y-4">
+                            {/* Highlights */}
+                            <div className="space-y-4 border-l border-slate-300/40 pl-8">
                                 <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide">
-                                    What I bring
+                                    Highlights
                                 </h3>
-                                <div className="flex flex-wrap gap-2">
+                                <ul className="list-disc list-inside space-y-2 text-slate-300">
                                     {[
-                                        "Product-minded",
-                                        "Collaborative",
-                                        "Adaptable",
-                                    ].map((trait) => (
-                                        <Chip
-                                            key={trait}
-                                            label={trait}
-                                            size="small"
-                                            className="bg-slate-700 text-slate-100"
-                                        />
-                                    ))}
-                                </div>
-
-                                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wide pt-4">
-                                    Enjoys
-                                </h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {[
-                                        "Team problem-solving",
-                                        "Iterative design",
-                                        "Learning new systems",
-                                        "Innovation-Centered Conversation",
+                                        "B.S. Computer Science, Cum Laude from The University of Alabama",
+                                        "GitHub Foundations Certified",
+                                        "Unity Junior Programmer",
                                     ].map((item) => (
-                                        <Chip
-                                            key={item}
-                                            label={item}
-                                            size="small"
-                                            className="bg-slate-700 text-slate-100"
-                                        />
+                                        <li key={item}>{item}</li>
                                     ))}
-                                </div>
+                                </ul>
                             </div>
                         </div>
                     </motion.div>

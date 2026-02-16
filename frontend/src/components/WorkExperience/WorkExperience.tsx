@@ -29,18 +29,29 @@ function parseDate(dateString: string): Date {
 
     // Parse format "MMM YYYY" (e.g., "Feb 2025", "Jan 2025") or full month names
     const monthMap: { [key: string]: number } = {
-        "jan": 0, "january": 0,
-        "feb": 1, "february": 1,
-        "mar": 2, "march": 2,
-        "apr": 3, "april": 3,
-        "may": 4,
-        "jun": 5, "june": 5,
-        "jul": 6, "july": 6,
-        "aug": 7, "august": 7,
-        "sep": 8, "september": 8,
-        "oct": 9, "october": 9,
-        "nov": 10, "november": 10,
-        "dec": 11, "december": 11,
+        jan: 0,
+        january: 0,
+        feb: 1,
+        february: 1,
+        mar: 2,
+        march: 2,
+        apr: 3,
+        april: 3,
+        may: 4,
+        jun: 5,
+        june: 5,
+        jul: 6,
+        july: 6,
+        aug: 7,
+        august: 7,
+        sep: 8,
+        september: 8,
+        oct: 9,
+        october: 9,
+        nov: 10,
+        november: 10,
+        dec: 11,
+        december: 11,
     };
 
     const parts = dateString.trim().toLowerCase().split(" ");
@@ -63,7 +74,7 @@ function dateRangesOverlap(
     start1: string,
     end1: string,
     start2: string,
-    end2: string
+    end2: string,
 ): boolean {
     const start1Date = parseDate(start1);
     const end1Date = parseDate(end1);
@@ -107,15 +118,19 @@ function WorkExperience() {
     const jobs: JobProps[] = [
         {
             companyName: "United Airlines",
-            role: "Business Analyst",
+            role: "Business Analyst - Digital Products",
             startDate: "February 2026",
             endDate: "Present",
             description:
-                "Worked as a Business Analyst on the United Airline Digital Products team. Helped organize development of new features related to customer seating for United Digital Channels.",
+                "Working as a Business Analyst on the United Airlines Digital Products team. Helped organize development of new features related to customer seating for United Digital Channels.",
             logo: "/images/united-airlines-logo.png",
             skills: [
                 { name: "Jira", icon: <SiJira />, color: "text-blue-400" },
-                { name: "Azure DevOps", icon: <SiAzuredevops />, color: "text-violet-400" },
+                {
+                    name: "Azure DevOps",
+                    icon: <SiAzuredevops />,
+                    color: "text-violet-400",
+                },
                 { name: "Figma", icon: <SiFigma />, color: "text-white" },
             ],
         },
@@ -128,9 +143,21 @@ function WorkExperience() {
                 "Worked as a Generative AI Researcher to research and implement Generative AI solutions for United Airlines including RAG, MCP, and Agentic AI solutions.",
             logo: "/images/united-airlines-logo.png",
             skills: [
-                { name: "Python", icon: <SiPython />, color: "text-yellow-400" },
-                { name: "FastAPI", icon: <SiFastapi />, color: "text-teal-400" },
-                { name: "LangChain", icon: <SiLangchain />, color: "text-white" },
+                {
+                    name: "Python",
+                    icon: <SiPython />,
+                    color: "text-yellow-400",
+                },
+                {
+                    name: "FastAPI",
+                    icon: <SiFastapi />,
+                    color: "text-teal-400",
+                },
+                {
+                    name: "LangChain",
+                    icon: <SiLangchain />,
+                    color: "text-white",
+                },
             ],
         },
         {
@@ -155,8 +182,16 @@ function WorkExperience() {
                 "Worked as a data analyst on the United Airlines Air Ops team. Created data driven solutions including dashboards for business partners including crew schedulers.",
             logo: "/images/united-airlines-logo.png",
             skills: [
-                { name: "Power BI", icon: <SiPowerbi />, color: "text-yellow-500" },
-                { name: "PostgreSQL", icon: <SiPostgresql />, color: "text-blue-400" },
+                {
+                    name: "Power BI",
+                    icon: <SiPowerbi />,
+                    color: "text-yellow-500",
+                },
+                {
+                    name: "PostgreSQL",
+                    icon: <SiPostgresql />,
+                    color: "text-blue-400",
+                },
             ],
         },
         {
@@ -168,7 +203,11 @@ function WorkExperience() {
                 "Worked as an iOS developer on the United Airlines Mobile App team to develop new features for cutomers outside of the app, as well as a researcher into AI solutions for baggage tracking.",
             logo: "/images/united-airlines-logo.png",
             skills: [
-                { name: "SwiftUI", icon: <SiSwift />, color: "text-orange-500" },
+                {
+                    name: "SwiftUI",
+                    icon: <SiSwift />,
+                    color: "text-orange-500",
+                },
             ],
         },
         {
@@ -180,8 +219,16 @@ function WorkExperience() {
                 "Worked as a Frontend Developer at the Center for Advanced Public Safety to prototype new applications such as geolocation mapping for public schools in Alabama.",
             skills: [
                 { name: "React", icon: <SiReact />, color: "text-cyan-400" },
-                { name: "TypeScript", icon: <SiTypescript />, color: "text-blue-500" },
-                { name: "SwiftUI", icon: <SiSwift />, color: "text-orange-500" },
+                {
+                    name: "TypeScript",
+                    icon: <SiTypescript />,
+                    color: "text-blue-500",
+                },
+                {
+                    name: "SwiftUI",
+                    icon: <SiSwift />,
+                    color: "text-orange-500",
+                },
             ],
         },
     ];
@@ -196,8 +243,8 @@ function WorkExperience() {
                       job.startDate,
                       job.endDate,
                       selectedExperience.startDate,
-                      selectedExperience.endDate
-                  )
+                      selectedExperience.endDate,
+                  ),
           )
         : [];
 
@@ -232,9 +279,9 @@ function WorkExperience() {
                     <div className="workExperienceContainer">
                         {selectedExperience && filteredJobs.length > 0 && (
                             <div className="workExperienceJobCarouselSection">
-                                <JobCarousel 
+                                <JobCarousel
                                     key={`${selectedExperience.companyName}-${selectedExperience.role}-${selectedExperience.startDate}`}
-                                    jobs={filteredJobs} 
+                                    jobs={filteredJobs}
                                 />
                             </div>
                         )}

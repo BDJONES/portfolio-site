@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { JobProps, SkillItem } from "./Job";
 import "./styling/JobCarousel.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { CarouselNavButton } from "../common/CarouselNavButton";
 
 /** Minimum horizontal movement (px) before we treat the gesture as horizontal (avoids stealing vertical scroll). */
@@ -14,21 +14,77 @@ const supportsHover = () =>
     typeof window !== "undefined" &&
     window.matchMedia("(hover: hover)").matches;
 
-// Skill icon component with custom tooltip
-function SkillIcon({ skill }: { skill: SkillItem }) {
+// Mobile: max-width 768px (matches nav button visibility)
+const useIsMobile = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        const mq = window.matchMedia("(max-width: 768px)");
+        setIsMobile(mq.matches);
+        const handler = () => setIsMobile(mq.matches);
+        mq.addEventListener("change", handler);
+        return () => mq.removeEventListener("change", handler);
+    }, []);
+    return isMobile;
+};
+
+// Skill icon component: tooltip on desktop (hover), overlay on mobile (click)
+function SkillIcon({
+    skill,
+    isOverlayActive,
+    onToggleOverlay,
+}: {
+    skill: SkillItem;
+    isOverlayActive: boolean;
+    onToggleOverlay: () => void;
+}) {
     const [showTooltip, setShowTooltip] = useState(false);
+    const isMobile = useIsMobile();
+
+    const handlePointerDown = (e: React.PointerEvent) => {
+        if (isMobile) {
+            e.stopPropagation(); // Prevent card drag from starting
+        }
+    };
+
+    const handleClick = (e: React.MouseEvent) => {
+        if (isMobile) {
+            e.preventDefault();
+            e.stopPropagation();
+            onToggleOverlay();
+        }
+    };
 
     return (
         <div
             className="jobCardTechItem"
             onMouseEnter={() => supportsHover() && setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
+            onPointerDown={handlePointerDown}
+            onClick={handleClick}
         >
             <span className={`jobCardTechIcon ${skill.color}`}>
                 {skill.icon}
             </span>
             {showTooltip && (
                 <span className="jobCarouselSkillTooltip">{skill.name}</span>
+            )}
+            {isMobile && (
+                <AnimatePresence>
+                    {isOverlayActive && (
+                        <motion.div
+                            key="overlay"
+                            className="jobCardTechOverlay"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <span className="jobCardTechOverlayText">
+                                {skill.name}
+                            </span>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             )}
         </div>
     );
@@ -87,6 +143,7 @@ function JobCarousel({ jobs }: JobCarouselProps) {
         "right",
     );
     const [dragOffset, setDragOffset] = useState(0);
+    const [activeTechIndex, setActiveTechIndex] = useState<number | null>(null);
     const swipeRef = useRef<HTMLDivElement>(null);
     const cardRef = useRef<HTMLDivElement>(null);
     const pointerStartRef = useRef<{
@@ -115,6 +172,11 @@ function JobCarousel({ jobs }: JobCarouselProps) {
     useEffect(() => {
         setCurrentIndex(0);
     }, [sortedJobs.length]);
+
+    // Reset active tech overlay when job changes
+    useEffect(() => {
+        setActiveTechIndex(null);
+    }, [safeCurrentIndex]);
 
     // Pointer swipe: same behavior as Experience carousel (lock to horizontal after threshold, 40px to change slide)
     // Using Pointer Events (modern, works on mouse/touch/trackpad/Apple Pencil)
@@ -413,6 +475,19 @@ function JobCarousel({ jobs }: JobCarouselProps) {
                                                     <SkillIcon
                                                         key={skillIndex}
                                                         skill={skill}
+                                                        isOverlayActive={
+                                                            activeTechIndex ===
+                                                            skillIndex
+                                                        }
+                                                        onToggleOverlay={() =>
+                                                            setActiveTechIndex(
+                                                                (prev) =>
+                                                                    prev ===
+                                                                    skillIndex
+                                                                        ? null
+                                                                        : skillIndex
+                                                            )
+                                                        }
                                                     />
                                                 ),
                                             )}

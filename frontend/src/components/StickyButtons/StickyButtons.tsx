@@ -92,7 +92,7 @@ function StickyButtons() {
                     className="stickyButton stickyButtonResume"
                     aria-label="Download Resume"
                 >
-                    Get Resume
+                    Download Resume
                 </a>
                 {/* <button
                     onClick={handleOpen}

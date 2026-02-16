@@ -31,3 +31,17 @@
 .media-carousel-dot-inactive {
     @apply bg-slate-100/40 hover:bg-slate-100/60;
 }
+
+/* iPhone 14 and mobile: prevent overflow in project dialog */
+@media (max-width: 430px) {
+    .media-carousel-container {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .media-carousel-image,
+    .media-carousel-video {
+        max-width: 100%;
+    }
+}
