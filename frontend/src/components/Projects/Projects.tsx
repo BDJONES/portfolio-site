@@ -50,7 +50,7 @@ const projects: ProjectProps[] = [
                 src: "/images/project_assets/Chess_Game_1999/Chess1.png",
             },
         ],
-        githubLink: "", //"https://github.com/WirelessInsect/Chess-Game-2025"
+        githubLink: "https://github.com/WirelessInsect/Chess-Game-2025",
     },
 ];
 
