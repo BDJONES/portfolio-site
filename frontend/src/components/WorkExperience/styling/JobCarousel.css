@@ -494,10 +494,16 @@
 .jobCardTechOverlay {
     @apply absolute inset-0 flex items-center justify-center rounded-lg bg-slate-900/90 text-slate-100;
     z-index: 10;
+    min-width: 0;
 }
 
 .jobCardTechOverlayText {
     @apply text-xs font-medium text-slate-100 text-center px-1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    max-width: 100%;
 }
 
 /* Mobile: no hover effect on Technology Used items; show pointer for tappable tech logos */
@@ -510,6 +516,11 @@
 @media (max-width: 768px) {
     .jobCardTechItem {
         cursor: pointer;
+    }
+
+    .jobCardTechIcon {
+        @apply w-8 h-8;
+        font-size: 2rem;
     }
 }
 
@@ -532,7 +543,8 @@
     }
 
     .jobCardTechIcon {
-        @apply w-5 h-5;
+        @apply w-8 h-8;
+        font-size: 2rem;
     }
 }
 
@@ -583,9 +595,9 @@
     }
 
     .jobCardTechIcon {
-        width: 1rem;
-        height: 1rem;
-        font-size: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 1.5rem;
     }
 
     .jobCardDescriptionSection {
